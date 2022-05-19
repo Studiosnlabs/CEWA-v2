@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <RelativeLayout
+            android:id="@+id/reg_applicationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/reg_applicationHeaderGroup"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/darkBlue"
+                android:backgroundTint="@color/darkBlue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/reg_Back"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
+
+
+                <TextView
+                    android:id="@+id/regTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppinsemibold"
+                    android:text="JOIN CEWA"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:id="@+id/reg_headerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/regTitle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="BASIC INFO,\n HOW CAN WE \n
+IDENTIFY YOU?"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+
+                <RelativeLayout
+                    android:id="@+id/reg_counterRelLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ic_ellipse"
+                    android:padding="10dp">
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/pInfoIcon"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_centerVertical="true"-->
+                    <!--                        android:text="1"-->
+                    <!--                        android:textColor="@color/white"-->
+                    <!--                        android:textSize="38dp" />-->
+
+                    <TextView
+                        android:id="@+id/reg_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppinsemibold"
+                        android:text="1/6"
+                        android:textColor="@color/white"
+                        android:textSize="34sp" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/regAgreementText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="gone"
+            android:layout_below="@id/reg_applicationHeader"
+            android:fontFamily="@font/poppinsemibold"
+            android:text="I [full name] herby apply for
+membership of the above named C.E.W.A
+and agree to be bound by the regulations
+of the Association. I understand that to
+have successful society we must make
+regular savings,receive loans for good
+purposes and make regular loan
+repayments. I promise to save at least
+[Ghc...] every month,share of [Ghc...] and
+an entrance fee of [Ghc...]"
+            android:textColor="@color/black"
+            />
+
+
+
+        <FrameLayout
+            android:id="@+id/reg_fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/regAgreementText"
+            android:layout_marginTop="19dp">
+
+        </FrameLayout>
+
+
+        <CheckBox
+            android:id="@+id/regAgree"
+            android:layout_width="584dp"
+            android:layout_height="23dp"
+            android:visibility="gone"
+            android:layout_below="@+id/reg_fragmentContainer"
+            android:layout_marginLeft="20dp"
+            android:text="AGREE" />
+
+        <Button
+            android:id="@+id/reg_nextBtn"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/reg_fragmentContainer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="next" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

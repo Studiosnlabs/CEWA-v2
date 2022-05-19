@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GeneralStatements">
+    
+    <RelativeLayout
+        android:padding="0dp"
+        android:id="@+id/genMainRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/genStatementHeader"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@color/darkBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/genStatementBack"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/LoanTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="GENERAL STATEMENTS"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/genStatementTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LoanTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="CONTRIBUTION BALANCE"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/genStatementAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/genStatementTitle"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppinsbold"
+                android:text="GHS 1000"
+                android:textColor="@color/white"
+                android:textSize="38sp" />
+
+
+        </RelativeLayout>
+
+
+        <!--  start date      -->
+        <RelativeLayout
+            android:id="@+id/startDateSelectRel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/genStatementHeader"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/startDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="Start Date"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/genStatementStartMonthSelector"
+                android:layout_width="150dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/startDateLabel"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/black_border" />
+
+            <Spinner
+                android:id="@+id/genStatementStartYearSelector"
+                android:layout_width="150dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/startDateLabel"
+                android:layout_marginLeft="15dp"
+                android:layout_toEndOf="@id/genStatementStartMonthSelector"
+                android:background="@drawable/black_border" />
+
+
+
+        </RelativeLayout>
+
+
+
+        <!--End Date-->
+
+
+        <RelativeLayout
+            android:id="@+id/EndDateSelectRel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startDateSelectRel"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/EndDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="End Date"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/genStatementEndMonthSelector"
+                android:layout_width="150dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/EndDateLabel"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/black_border" />
+
+            <Spinner
+                android:id="@+id/genStatementEndYearSelector"
+                android:layout_width="150dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/EndDateLabel"
+                android:layout_marginLeft="15dp"
+                android:layout_toEndOf="@id/genStatementEndMonthSelector"
+                android:background="@drawable/black_border" />
+
+            <ImageView
+                android:id="@+id/genSearch"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/EndDateLabel"
+                android:layout_marginLeft="15dp"
+                android:layout_toEndOf="@id/genStatementEndYearSelector"
+                android:src="@drawable/ic_baseline_search_24" />
+
+        </RelativeLayout>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="@dimen/cardview_default_elevation"
+            android:elevation="@dimen/cardview_compat_inset_shadow"
+            android:layout_below="@id/EndDateSelectRel">
+
+            <RelativeLayout
+                android:id="@+id/generalStatementPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/calendarIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendaricon"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                />
+
+                <TextView
+                    android:id="@+id/genstatementPreviewDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@+id/calendarIcon"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="MARCH 2022"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/genstatementPreviewDateEnd"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@+id/genstatementPreviewDate"
+                    android:fontFamily="@font/poppinsbold"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="- MARCH 2022" />
+
+                <View
+                    android:id="@+id/horizontalLine"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/genstatementPreviewDate"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/contributionLabel"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/horizontalLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Contribution" />
+
+                <TextView
+                    android:id="@+id/contributionAmt"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/horizontalLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:text="GHS 400000000" />
+
+
+
+
+                <TextView
+                    android:id="@+id/earningLabel"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/contributionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Earnings" />
+
+                <TextView
+                    android:id="@+id/earningAmt"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/contributionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:text="GHS 3,000,000" />
+
+                <TextView
+                    android:id="@+id/rateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/earningLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Rate" />
+
+                <TextView
+                    android:id="@+id/rateAmt"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/earningLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:text="97%"
+                    />
+
+                <TextView
+                    android:id="@+id/withdrawalsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rateLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Withdrawals" />
+
+                <TextView
+                    android:id="@+id/withdrawalsAmt"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/rateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:text="GHS 1,000"
+                    />
+
+                <Button
+                    android:id="@+id/viewFullGenStatement"
+                    android:layout_width="219dp"
+                    android:layout_height="39dp"
+                    android:layout_below="@+id/withdrawalsAmt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/black_round_button"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="VIEW"
+                    android:textColor="@color/white" />
+
+
+
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <ProgressBar
+            android:id="@+id/genStatementProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
+        
+        
+    </RelativeLayout>
+    
+    
+
+</androidx.constraintlayout.widget.ConstraintLayout>

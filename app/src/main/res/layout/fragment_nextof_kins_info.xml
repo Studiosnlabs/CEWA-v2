@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:context=".nextofKinsInfo">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/regNOK1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/NextOfKinsMainLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="NEXT OF KINS"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/regNOKName1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/regNOKName1ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="1.FullName"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKName1ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKName1Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+    <!--fullName-->
+        <TextView
+            android:id="@+id/regNOKRelation1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKName1ET"
+            android:layout_alignStart="@id/regNOKName1ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Relationship"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKRelation1ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKRelation1Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+    <!--Gender-->
+
+        <TextView
+            android:id="@+id/regNOKPercentageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKRelation1ET"
+            android:layout_alignStart="@id/regNOKName1ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Percentage"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKPercentageET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKPercentageLabel"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/horizontalLine"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/regNOKPercentageET"
+            android:background="@drawable/bg_horizontal_dotted_line"/>
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/regNOK2"
+        android:layout_below="@id/regNOK1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/regNOKName2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/regNOKName2ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="2.FullName"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKName2ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKName2Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+        <!--fullName-->
+        <TextView
+            android:id="@+id/regNOKRelation2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKName2ET"
+            android:layout_alignStart="@id/regNOKName2ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Relationship"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKRelation2ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKRelation2Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+        <!--Gender-->
+
+        <TextView
+            android:id="@+id/regNOK2PercentageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKRelation2ET"
+            android:layout_alignStart="@id/regNOKName2ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Percentage"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOK2PercentageET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOK2PercentageLabel"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/horizontalLine2"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/regNOK2PercentageET"
+            android:background="@drawable/bg_horizontal_dotted_line"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/regNOK3"
+        android:layout_below="@id/regNOK2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/regNOKName3Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/regNOKName3ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="3.FullName"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKName3ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKName3Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+        <!--fullName-->
+        <TextView
+            android:id="@+id/regNOKRelation3Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKName3ET"
+            android:layout_alignStart="@id/regNOKName3ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Relationship"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOKRelation3ET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOKRelation3Label"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+        <!--Gender-->
+
+        <TextView
+            android:id="@+id/regNOK3PercentageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/regNOKRelation3ET"
+            android:layout_alignStart="@id/regNOKName3ET"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Percentage"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/regNOK3PercentageET"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/regNOK3PercentageLabel"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_border"
+            android:fontFamily="@font/poppinsregular"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="#734E4D4D"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

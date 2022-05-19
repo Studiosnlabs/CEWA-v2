@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:context=".basicInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/regStaffidLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Staff ID"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/regStaffidET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/regStaffidLabel"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/black_border"
+        android:fontFamily="@font/poppinsregular"
+        android:inputType="number"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#734E4D4D"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+
+
+<!--fullName-->
+    <TextView
+        android:id="@+id/regFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regStaffidET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Full Name"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/regFullNameET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/regFullName"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/black_border"
+        android:fontFamily="@font/poppinsregular"
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#734E4D4D"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+
+
+<!--Gender-->
+
+    <TextView
+        android:id="@+id/genderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regFullNameET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Gender"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/genderSelect"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/genderLabel"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/black_border"
+        android:inputType="number"
+        android:paddingLeft="10dp" />
+
+<!--DEPARTMENT-->
+
+    <TextView
+        android:id="@+id/departmentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genderSelect"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Division"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/departmentSelect"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/departmentLabel"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/black_border"
+        android:inputType="number"
+        android:paddingLeft="10dp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/mainBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:background="@color/darkBlue"
+                android:backgroundTint="@color/darkBlue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/userToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:visibility="invisible">
+
+                    <include layout="@layout/toolbar_snippet" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/userDetGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iconAvatar"
+                        android:layout_width="80dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/cewalogo"
+                        android:visibility="invisible" />
+
+
+
+                    <TextView
+                        android:visibility="invisible"
+                        android:id="@+id/welcomeMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iconAvatar"
+                        android:layout_alignStart="@id/iconAvatar"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="Welcome Back"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:visibility="invisible"
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/welcomeMessage"
+                        android:layout_alignStart="@id/iconAvatar"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="Kwabena Jones"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/accountLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userDetGroup"
+                    android:layout_alignStart="@id/userDetGroup"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="ACCOUNT BALANCE"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/Finiicons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/finicons"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/businessMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/businessman" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/accountDetRel"
+                android:layout_width="299dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="260dp"
+                android:background="@drawable/ic_balancerec"
+                android:padding="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <RelativeLayout
+                    android:id="@+id/accountDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/memberIdTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/poppinsemibold"
+                        android:text="STAFF ID"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/userMemberID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/memberIdTitle"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="1156897"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+
+
+                    <TextView
+                        android:id="@+id/userAccountBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/userMemberID"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="GHS 67,0058"
+                        android:textColor="@color/white"
+                        android:textSize="23sp" />
+
+                </RelativeLayout>
+                <!--account det end-->
+
+                <Button
+                    android:id="@+id/showBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="show balance"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="383dp"
+                android:layout_below="@id/accountDetRel"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/partialWithdrawalCard"
+                        android:layout_width="280dp"
+                        android:layout_height="76dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/withdrawImage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_partialwithdrawal" />
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_toEndOf="@+id/withdrawImage"
+                                android:fontFamily="@font/poppinsemibold"
+                                android:text="WITHDRAWAL"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="13sp" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--  LOAN APPLICATION      -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/loanCard"
+                        android:layout_width="280dp"
+                        android:layout_height="76dp"
+                        android:layout_below="@+id/partialWithdrawalCard"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/loanImage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_loanapplication" />
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_toEndOf="@+id/loanImage"
+                                android:fontFamily="@font/poppinsemibold"
+                                android:text="LOAN APPLICATION"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="13sp" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- LOAN STATEMENT -->
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/loanStatementCard"
+                        android:layout_width="280dp"
+                        android:layout_height="76dp"
+                        android:layout_below="@+id/loanCard"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/loanStatementImage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_loanstatement" />
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_toEndOf="@+id/loanStatementImage"
+                                android:fontFamily="@font/poppinsemibold"
+                                android:text="LOAN STATEMENT"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="13sp" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <!-- GENERAL STATEMENT -->
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/generalStatementCard"
+                        android:layout_width="280dp"
+                        android:layout_height="76dp"
+                        android:layout_below="@+id/loanStatementCard"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/genStatementImage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_generalstatment" />
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_toEndOf="@+id/genStatementImage"
+                                android:fontFamily="@font/poppinsemibold"
+                                android:text="GENERAL STATEMENT"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="13sp" />
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/quickActionsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Quick Actions"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

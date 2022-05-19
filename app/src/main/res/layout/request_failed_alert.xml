@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="269dp"
+    android:background="@drawable/white_border_curve">
+
+    <TextView
+        android:id="@+id/requesttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppinsblack"
+        android:text="INVALID AMOUNT"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/succesttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/requesttitle"
+        android:textAlignment="center"
+        android:text="Amount Exceeds Withdrawal Limit"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
+
+
+    <ImageView
+        android:id="@+id/requestsuccessImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/reqeuestfailed"
+        android:layout_below="@id/succesttitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/DoneBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="TRY AGAIN"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+
+
+
+</RelativeLayout>

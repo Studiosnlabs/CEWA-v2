@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registrationCompleteInfo">
+
+    <ImageView
+        android:id="@+id/regCompleteCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/requestsuccess" />
+
+    <TextView
+        android:id="@+id/regCompleteMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_below="@id/regCompleteCheck"
+        android:fontFamily="@font/poppinsemibold"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:text="REGISTRATION IS COMPLETE,\n
+ONCE YOUR ACCOUNT IS \n
+APPROVED YOU WILL RECIEVE A \n
+PASSWORD TO LOGIN"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:textAlignment="center"/>
+
+
+    <ProgressBar
+        android:id="@+id/registerProgressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

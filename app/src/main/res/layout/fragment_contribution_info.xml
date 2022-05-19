@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contributionInfo">
+
+
+    <TextView
+        android:id="@+id/regContributionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Minimum Contribution(GHC)"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/regContributionET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/regContributionLabel"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/black_border"
+        android:fontFamily="@font/poppinsregular"
+        android:inputType="number"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#734E4D4D"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+
+
+    <!--fullName-->
+    <TextView
+        android:id="@+id/entranceFeeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regContributionET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Entrance Fee(GHC)"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/entranceFeeET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/entranceFeeLabel"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/black_border"
+        android:fontFamily="@font/poppinsregular"
+        android:inputType="number"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#734E4D4D"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+
+
+    <!--Gender-->
+
+    <TextView
+        android:id="@+id/regsharesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entranceFeeET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Shares(GHC)"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/regSharesET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/regsharesLabel"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/black_border"
+        android:inputType="number"
+        android:paddingLeft="10dp" />
+
+</RelativeLayout>

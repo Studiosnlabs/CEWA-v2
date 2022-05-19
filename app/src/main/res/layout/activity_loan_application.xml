@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoanApplication">
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+
+
+
+    <RelativeLayout
+        android:id="@+id/loan_applicationGenLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/loanHeaderGroupRel"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:background="@color/darkBlue"
+            android:backgroundTint="@color/darkBlue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/loanBack"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+
+            <TextView
+                android:id="@+id/LoanTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="LOAN APPLICATION"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/loanLimitTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LoanTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="LOAN LIMIT"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/loanLimitAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loanLimitTitle"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppinsbold"
+                android:text="GHS 1000"
+                android:textColor="@color/white"
+                android:textSize="38sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loanLimitAmt"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/pInfoIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_baseline_info_24" />
+
+                <TextView
+                    android:id="@+id/loanInstruction"
+                    android:layout_width="264dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/pInfoIcon"
+                    android:text="This is information about partial loans
+and how to get them. You get a certain
+percentage of your current balance"
+                    android:textColor="@color/white"
+
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/loanHeaderGroupRel">
+
+
+            <TextView
+                android:id="@+id/loanAmtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/loanAmtET"
+                android:layout_width="251dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/loanAmtLabel"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
+
+            <TextView
+                android:id="@+id/periodLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loanAmtLabel"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="PERIOD OF INSTALLMENT"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/periodET"
+                android:layout_width="251dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/periodLabel"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
+
+            <TextView
+                android:id="@+id/loanPurposeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/periodET"
+
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="PURPOSE"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/purposeET"
+                android:layout_width="260dp"
+                android:layout_height="91dp"
+                android:layout_below="@id/loanPurposeLabel"
+                android:background="@drawable/black_border"
+                android:hint="What’s your reason for making this withdrawal?"
+                android:paddingLeft="20dp"
+                android:inputType="textMultiLine"
+                android:paddingTop="0dp" />
+
+
+            <Button
+                android:id="@+id/loanRequestBtn"
+                android:layout_width="209dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/purposeET"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/black_round_button"
+                android:fontFamily="@font/poppinsbold"
+                android:text="REQUEST"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PartialWithdrawal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/pHeaderGroupRel"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:background="@color/darkBlue"
+            android:backgroundTint="@color/darkBlue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/pwithdrawalBack"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+
+            <TextView
+                android:id="@+id/partialWithdrawlTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="PARTIAL WITHDRAWAL"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/pWithLimitTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/partialWithdrawlTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsemibold"
+                android:text="WITHDRAWAL LIMIT"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/withDrawalLimitAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pWithLimitTitle"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppinsbold"
+                android:text="GHS 1000"
+                android:textColor="@color/white"
+                android:textSize="38sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/withDrawalLimitAmt"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/pInfoIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_baseline_info_24" />
+
+                <TextView
+                    android:id="@+id/WithdrawalInfo"
+                    android:layout_width="264dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/pInfoIcon"
+                    android:text="This is information about partial loans
+and how to get them. You get a certain
+percentage of your current balance"
+                    android:textColor="@color/white"
+
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/partialwithdrawalRealayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/pHeaderGroupRel">
+
+            <TextView
+                android:id="@+id/withdrawalTypelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Type"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/withdrawTypeSelect"
+                android:layout_width="251dp"
+                android:layout_height="47dp"
+                android:layout_below="@id/withdrawalTypelabel"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/pAmtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/withdrawTypeSelect"
+
+                android:fontFamily="@font/poppinsbold"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/pAmtET"
+                android:layout_width="251dp"
+                android:layout_height="47dp"
+                android:layout_below="@id/pAmtLabel"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/pPurposeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pAmtET"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="PURPOSE"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/purposeET"
+                android:layout_width="260dp"
+                android:layout_height="91dp"
+                android:layout_below="@id/pPurposeLabel"
+                android:background="@drawable/black_border"
+                android:hint="What’s your reason for making this withdrawal."
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+
+            <Button
+                android:id="@+id/partialWithdrawalRequestBtn"
+                android:layout_width="209dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/purposeET"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/black_round_button"
+                android:fontFamily="@font/poppinsbold"
+                android:text="REQUEST"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

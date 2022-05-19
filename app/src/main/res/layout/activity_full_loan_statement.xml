@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FullLoanStatement">
+
+    <TextView
+        android:id="@+id/loadingtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#ffffff"
+        tools:layout_editor_absoluteX="-14dp"
+        tools:layout_editor_absoluteY="-275dp">
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="#ffffff">
+
+            <RelativeLayout
+                android:id="@+id/payslipRel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="#ffffff"
+
+                >
+
+                <RelativeLayout
+                    android:id="@+id/tableHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/payheaderlogo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/cewalogo" />
+
+                    <TextView
+                        android:id="@+id/headerTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/payheaderlogo"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="GHANA COCOA BOARD"
+                        android:textColor="#A36407"
+                        android:textSize="20sp"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+
+                <TableLayout
+                    android:id="@+id/identificationTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tableHeader"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:stretchColumns="1">
+
+
+                    <TextView
+                        android:id="@+id/monthYearTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsbold"
+                        android:gravity="center"
+                        android:text="Loan Statement from Month Year to Month Year"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="10dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="STAFF NAME"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/Employee_id"
+                            android:layout_width="100dp"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="Kwabena Jones"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+
+
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="10dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Member ID"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/TIN"
+                            android:layout_width="10dp"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="2020 "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="10dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="DIVISION"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/Employee_name"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="Head Office"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="STAFF ID"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/SSF"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="1151069"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Contact"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/TIER2"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="kwabenajones@cocobod.net"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+
+
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <!--        billing table starts here-->
+
+
+                <TableLayout
+                    android:id="@+id/billingTable"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/identificationTable"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="50dp"
+                    android:stretchColumns="1,2,3,4">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Date"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:fontFamily="@font/poppinsbold"
+                            android:layout_width="100dp"
+                            android:text="Loan Amount"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Debt"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Installment "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Balance"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+
+                    </TableRow>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TableRow android:background="@drawable/white_gray_border_bottom" android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="20dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="20dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="GROSS SALARY"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/grossSalaryAmt"
+                            android:layout_width="30dp"
+                            android:layout_gravity="right"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="#####"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="TOTAL DEDUCTION"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/sumTD"
+                            android:layout_width="50dp"
+                            android:layout_gravity="right"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="####"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                    <TableRow android:background="@drawable/white_gray_border_bottom" android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="20dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="NET PAY"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/netAmt"
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="right"
+                            android:padding="3dip"
+                            android:text="#####"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity=""
+                            android:padding="3dip"
+                            android:text="TAXABLE"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/taxableAmt"
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="right"
+                            android:padding="3dip"
+                            android:text="####"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+
+                            android:layout_width="40dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                    <TableRow android:background="@drawable/white_gray_border_bottom" android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="20dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="TAKE HOME PAY"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/takeHomeAmt"
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="right"
+                            android:padding="3dip"
+                            android:text="#####"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+
+                            android:layout_width="50dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+
+                </TableLayout>
+
+
+                <TableLayout
+                    android:id="@+id/transferDetailsTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/billingTable"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    android:background="@drawable/bankdetbg"
+                    android:padding="7dp">
+
+                    <TableRow>
+
+                        <TextView
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="PAYMENT MADE BY TRANSFER TO:"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="BANK"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/BankName"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="N/A"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Branch"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/BranchName"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="N/A"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_marginRight="25dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:padding="3dip"
+                            android:text="Account Number"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:id="@+id/accountNumber"
+                            android:fontFamily="@font/poppinsregular"
+                            android:padding="3dip"
+                            android:text="BANK ACCOUNT"
+                            android:textColor="@color/black"
+                            android:textSize="8sp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="download"
+        android:src="@drawable/ic_baseline_arrow_circle_down_25"
+        app:backgroundTint="@color/darkBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

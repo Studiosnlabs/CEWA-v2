@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:context=".contactInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/regAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Address"
+        android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/regAddressET"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/regAddressLabel"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+
+                android:background="@drawable/black_border"
+                android:fontFamily="@font/poppinsregular"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="#734E4D4D"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+
+    <!--fullName-->
+    <TextView
+        android:id="@+id/regHouseNoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regAddressET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Houes No"
+        android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/regHouseNoET"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/regHouseNoLabel"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/black_border"
+                android:fontFamily="@font/poppinsregular"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="#734E4D4D"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+
+    <!--Gender-->
+
+    <TextView
+        android:id="@+id/regLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regHouseNoET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Location"
+        android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/regLocationET"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/regLocationLabel"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_border"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+
+    <!--DEPARTMENT-->
+
+    <TextView
+        android:id="@+id/regPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regLocationET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Phone"
+        android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/regPhoneET"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/regPhoneLabel"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
+    <TextView
+        android:id="@+id/regEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regPhoneET"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Email"
+        android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/regEmailET"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/regEmailLabel"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_border"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

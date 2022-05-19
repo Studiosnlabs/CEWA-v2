@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeScreen">
+
+    <TextView
+        android:id="@+id/welcomeBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="WELCOME TO THE \n
+CEWA MOBILE APP"
+        android:textAlignment="center"
+        android:textColor="@color/darkBlue" />
+
+    <ImageView
+        android:layout_below="@+id/welcomeBanner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:id="@+id/welcomeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_welcome" />
+
+    <Button
+        android:id="@+id/showMeAround"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcomeImage"
+        android:textColor="@color/white"
+        android:text="SHOW ME AROUND"
+        android:layout_width="202dp"
+        android:layout_height="55dp" />
+
+    <android.widget.Button
+        android:id="@+id/skipTour"
+        android:layout_width="209dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/showMeAround"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/black_round_button"
+        android:fontFamily="@font/poppinsbold"
+        android:text="SKIP TOUR"
+        android:textColor="@color/black" />
+
+</RelativeLayout>
