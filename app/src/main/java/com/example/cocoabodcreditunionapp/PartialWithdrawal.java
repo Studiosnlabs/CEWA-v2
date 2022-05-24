@@ -276,9 +276,9 @@ public class PartialWithdrawal extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if ( typeOfWithdrawal.isEmpty() || typeOfWithdrawal.equals("Select a loan type")){
+                if ( typeOfWithdrawal.isEmpty() || typeOfWithdrawal.equals("Select a withdrawal type")){
 
-                    Toast.makeText(PartialWithdrawal.this, "Select a loan type", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PartialWithdrawal.this, "Select a withdrawal type", Toast.LENGTH_SHORT).show();
                 }
                 else if(AmountET.getText().toString().isEmpty()){
                     Toast.makeText(PartialWithdrawal.this, "Enter an amount", Toast.LENGTH_SHORT).show();
@@ -303,7 +303,7 @@ public class PartialWithdrawal extends AppCompatActivity {
 
         int thisMonthInt = 0;
 
-        String[] items2 = new String[]{"Select a loan type", "Partial Withdrawal", "Complete Withdrawal"};
+        String[] items2 = new String[]{"Select a withdrawal type", "Partial Withdrawal", "Complete Withdrawal"};
 
 //      ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //  dropdown.setAdapter(adapter);
