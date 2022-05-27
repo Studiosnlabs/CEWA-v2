@@ -110,8 +110,8 @@ percentage of your current balance"
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/loanHeaderGroupRel">
+            android:layout_below="@id/loanHeaderGroupRel"
+            android:layout_centerHorizontal="true">
 
             <TextView
                 android:id="@+id/loanTypelabel"
@@ -129,9 +129,8 @@ percentage of your current balance"
                 android:layout_height="47dp"
                 android:layout_below="@id/loanTypelabel"
                 android:background="@drawable/black_border"
-                android:inputType="number"
                 android:dropDownSelector="@color/black"
-                 />
+                android:inputType="number" />
 
 
             <TextView
@@ -167,13 +166,12 @@ percentage of your current balance"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/periodET"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_below="@id/periodLabel"
                 android:background="@drawable/black_border"
-                android:inputType="number"
                 android:paddingLeft="10dp" />
 
 

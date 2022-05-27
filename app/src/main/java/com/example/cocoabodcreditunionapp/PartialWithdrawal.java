@@ -33,6 +33,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -63,6 +64,7 @@ public class PartialWithdrawal extends AppCompatActivity {
     Double amountRequested;
     String pBearerToken;
     AlertDialog.Builder inProgressrequestAlert;
+    DecimalFormat df=new DecimalFormat("0.00");
 
 
     private static final String TAG = "Withdrawal";
@@ -119,12 +121,12 @@ public class PartialWithdrawal extends AppCompatActivity {
 
             if (LoanBalance==0){
                 WithdrawalRequestlimit=ContributionBal-200;
-                WithdrawalLimitTV.setText("GHS "+WithdrawalRequestlimit);
+                WithdrawalLimitTV.setText("GHS "+df.format(WithdrawalRequestlimit));
             }
 
             else{
                 WithdrawalRequestlimit = ContributionBal - (0.33 * LoanBalance);
-                WithdrawalLimitTV.setText("GHS "+WithdrawalRequestlimit);
+                WithdrawalLimitTV.setText("GHS "+df.format(WithdrawalRequestlimit));
             }
 
 
