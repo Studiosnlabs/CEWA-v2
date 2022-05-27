@@ -9,13 +9,13 @@
         android:left="1dp">
         <shape android:shape="rectangle">
             <stroke
-                android:width="1dp"
-                android:color="@color/black" />
+                android:width="3dp"
+                android:color="#113366" />
 
             <solid android:color="@color/white" />
 
 
-
+            <corners android:radius="10dp" />
 
         </shape>
     </item>

@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/drawable/black_border.xml" value="0.143" />
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/drawable/black_round_button.xml" value="0.143" />
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/drawable/ic_balancerec.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/layout/activity_loan_application.xml" value="0.18" />
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/layout/activity_main.xml" value="0.1875" />
+        <entry key="..\:/Users/hp/Desktop/CEWA/app/src/main/res/layout/activity_partial_withdrawal.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/CocoabodCreditUnionApp/app/src/main/res/drawable-v24/ic_baseline_help_24.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/hp/Desktop/CocoabodCreditUnionApp/app/src/main/res/drawable-v24/white_gray_border_bottom.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/hp/Desktop/CocoabodCreditUnionApp/app/src/main/res/drawable/bankdetbg.xml" value="0.10885416666666667" />

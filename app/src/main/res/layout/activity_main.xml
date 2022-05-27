@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:visibility="invisible">
+                    android:visibility="gone">
 
                     <include layout="@layout/toolbar_snippet" />
 
@@ -90,12 +90,12 @@
                     android:layout_below="@id/userDetGroup"
                     android:layout_alignStart="@id/userDetGroup"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="90dp"
                     android:fontFamily="@font/poppinsregular"
-                    android:text="ACCOUNT BALANCE"
+                    android:text="MY ACCOUNTS"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/Finiicons"
@@ -114,78 +114,168 @@
 
             </RelativeLayout>
 
+<HorizontalScrollView
+    android:id="@+id/balancesScroll"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="250dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <RelativeLayout
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        >
+
+
+        <RelativeLayout
+            android:id="@+id/accountDetRel"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/ic_balancerec"
+            android:padding="5dp">
+
 
             <RelativeLayout
-                android:id="@+id/accountDetRel"
-                android:layout_width="299dp"
-                android:layout_height="92dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="260dp"
-                android:background="@drawable/ic_balancerec"
-                android:padding="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/accountDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-
-                <RelativeLayout
-                    android:id="@+id/accountDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/memberIdTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/poppinsemibold"
-                        android:text="STAFF ID"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/userMemberID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/memberIdTitle"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/poppinsregular"
-                        android:text="1156897"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-
-                    <TextView
-                        android:id="@+id/userAccountBalance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/userMemberID"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="GHS 67,0058"
-                        android:textColor="@color/white"
-                        android:textSize="23sp" />
-
-                </RelativeLayout>
-                <!--account det end-->
-
-                <Button
-                    android:id="@+id/showBalance"
+                <TextView
+                    android:id="@+id/memberIdTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="show balance"
-                    android:textColor="@color/white" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppinsemibold"
+                    android:text="Contribution"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
+                <TextView
+                    android:id="@+id/userMemberID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/memberIdTitle"
+                    android:layout_alignStart="@+id/memberIdTitle"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="1156897"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/userAccountBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userMemberID"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="GHS 67,0058"
+                    android:textColor="@color/white"
+                    android:textSize="23sp" />
 
             </RelativeLayout>
+            <!--account det end-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showBalance"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/black_round_button"
+                android:text="show my balance"
+                android:textSize="12sp"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+        <!--loan balance-->
+
+        <RelativeLayout
+            android:id="@+id/LaccountDetRel"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_toEndOf="@id/accountDetRel"
+            android:background="@drawable/ic_balancerec"
+            android:padding="5dp">
+
+
+            <RelativeLayout
+                android:id="@+id/LaccountDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/LmemberIdTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/poppinsemibold"
+                    android:text="Outstanding Loan"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/LuserMemberID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/LmemberIdTitle"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="1156897"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/LuserAccountBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LuserMemberID"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="GHS 67,0058"
+                    android:textColor="@color/white"
+                    android:textSize="23sp" />
+
+            </RelativeLayout>
+            <!--account det end-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/LshowBalance"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                android:textSize="12sp"
+                android:background="@drawable/black_round_button"
+                android:text="show my balance"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</HorizontalScrollView>
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="383dp"
-                android:layout_below="@id/accountDetRel"
+                android:layout_below="@id/balancesScroll"
                 android:layout_marginBottom="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">

@@ -113,20 +113,42 @@ percentage of your current balance"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/loanHeaderGroupRel">
 
+            <TextView
+                android:id="@+id/loanTypelabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Type"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/loanTypeSelect"
+                android:layout_width="300dp"
+                android:layout_height="47dp"
+                android:layout_below="@id/loanTypelabel"
+                android:background="@drawable/black_border"
+                android:inputType="number"
+                android:dropDownSelector="@color/black"
+                 />
+
 
             <TextView
                 android:id="@+id/loanAmtLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_below="@id/loanTypeSelect"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Amount"
+                android:text="Amount(GHS)"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
+
             <EditText
                 android:id="@+id/loanAmtET"
-                android:layout_width="251dp"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_below="@id/loanAmtLabel"
                 android:background="@drawable/black_border"
@@ -147,7 +169,7 @@ percentage of your current balance"
 
             <EditText
                 android:id="@+id/periodET"
-                android:layout_width="251dp"
+                android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_below="@id/periodLabel"
                 android:background="@drawable/black_border"
@@ -160,7 +182,6 @@ percentage of your current balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/periodET"
-
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppinsbold"
                 android:text="PURPOSE"
@@ -169,14 +190,15 @@ percentage of your current balance"
 
             <EditText
                 android:id="@+id/purposeET"
-                android:layout_width="260dp"
-                android:layout_height="91dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
                 android:layout_below="@id/loanPurposeLabel"
                 android:background="@drawable/black_border"
-                android:hint="What’s your reason for making this withdrawal?"
+                android:gravity="top"
+                android:hint="Tell us why?"
+                android:inputType="textShortMessage"
                 android:paddingLeft="20dp"
-                android:inputType="textMultiLine"
-                android:paddingTop="0dp" />
+                android:paddingTop="20dp" />
 
 
             <Button

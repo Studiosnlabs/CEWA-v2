@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private static final int INTENT_AUTHENTICATE = 20;
     Button showBalanceBtn;
     RelativeLayout accountDetailsRel;
+    RelativeLayout LaccountDetailsRel;
     CardView PartialWithdrawalCard;
     CardView LoanApplicationCard;
     CardView GeneralStatementCard;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView userContribution;
     TextView userName;
     TextView memberID;
+    TextView myAccountLabel;
+    TextView loanBalance;
+    Button showLoanBalanceBtn;
 
     public void showPopup(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
@@ -64,7 +68,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         showBalanceBtn = findViewById(R.id.showBalance);
 
+        showLoanBalanceBtn=findViewById(R.id.LshowBalance);
+
         accountDetailsRel = findViewById(R.id.accountDetails);
+        LaccountDetailsRel=findViewById(R.id.LaccountDetails);
 
         PartialWithdrawalCard = findViewById(R.id.partialWithdrawalCard);
 
@@ -86,18 +93,24 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         businessMan=findViewById(R.id.businessMan);
         finiIcons=findViewById(R.id.Finiicons);
 
+        myAccountLabel=findViewById(R.id.accountLabel);
+
         userName=findViewById(R.id.profileName);
         userContribution=findViewById(R.id.userAccountBalance);
+        loanBalance=findViewById(R.id.LuserAccountBalance);
         memberID=findViewById(R.id.userMemberID);
 
         SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
         String UserName=UserDetails.getString("userName","n/a");
         String MemberId=UserDetails.getString("memberID","n/a");
         String ContibutionBal=UserDetails.getString("contributionBal","n/a");
+        String loanBal = UserDetails.getString("current_loan_balance", "n/a");
+
 
         userName.setText(UserName);
         memberID.setText(MemberId);
         userContribution.setText("GHS "+ContibutionBal);
+        loanBalance.setText("GHS "+loanBal);
         Log.d(TAG, "onCreate: "+memberID);
 
         optionsButton.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +138,19 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     }
                 });
 
+        ActivityResultLauncher<Intent> LauthActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // There are no request codes
+                            Intent data = result.getData();
+                            showLoanBalanceBtn.setVisibility(View.GONE);
+                            LaccountDetailsRel.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
 
         showBalanceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,12 +161,29 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
                     if (km.isKeyguardSecure()) {
-                        Intent auhtIntent = km.createConfirmDeviceCredentialIntent("SHOW BALANCE", "ENTER YOUR PHONE PASSWORD");
+                        Intent auhtIntent = km.createConfirmDeviceCredentialIntent("SHOW BALANCE", "UNLOCK YOUR PHONE");
                         authActivityResultLauncher.launch(auhtIntent);
 
                     }
                 }
 
+
+            }
+        });
+
+
+        showLoanBalanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+                    if (km.isKeyguardSecure()) {
+                        Intent auhtIntent = km.createConfirmDeviceCredentialIntent("SHOW BALANCE", "UNLOCK YOUR PHONE");
+                        LauthActivityResultLauncher.launch(auhtIntent);
+
+                    }
+                }
 
             }
         });
@@ -187,12 +230,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.d(TAG, "onScrollChange:y value is : " + scrollY);
-                if (scrollY > 95) {
+                if (scrollY > 90) {
 
                     userDetGroup.setVisibility(View.GONE);
                     userToolbar.setVisibility(View.VISIBLE);
                     businessMan.setVisibility(View.GONE);
                     finiIcons.setVisibility(View.VISIBLE);
+                    myAccountLabel.setVisibility(View.GONE);
 
 
 

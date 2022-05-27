@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PartialWithdrawal">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -115,7 +122,7 @@ percentage of your current balance"
 
             <Spinner
                 android:id="@+id/withdrawTypeSelect"
-                android:layout_width="251dp"
+                android:layout_width="300dp"
                 android:layout_height="47dp"
                 android:layout_below="@id/withdrawalTypelabel"
                 android:background="@drawable/black_border"
@@ -129,13 +136,13 @@ percentage of your current balance"
                 android:layout_below="@+id/withdrawTypeSelect"
 
                 android:fontFamily="@font/poppinsbold"
-                android:text="Amount"
+                android:text="Amount(GHS)"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/pAmtET"
-                android:layout_width="251dp"
+                android:layout_width="300dp"
                 android:layout_height="47dp"
                 android:layout_below="@id/pAmtLabel"
                 android:background="@drawable/black_border"
@@ -155,19 +162,22 @@ percentage of your current balance"
 
             <EditText
                 android:id="@+id/purposeET"
-                android:layout_width="260dp"
-                android:layout_height="91dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
                 android:layout_below="@id/pPurposeLabel"
                 android:background="@drawable/black_border"
-                android:hint="What’s your reason for making this withdrawal."
-                android:inputType="textMultiLine"
-                android:padding="10dp" />
+                android:gravity="top"
+                android:hint="Tell us why?"
+                android:inputType="textShortMessage"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp" />
 
 
             <Button
                 android:id="@+id/partialWithdrawalRequestBtn"
                 android:layout_width="209dp"
                 android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
                 android:layout_below="@+id/purposeET"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
@@ -179,5 +189,5 @@ percentage of your current balance"
         </RelativeLayout>
     </RelativeLayout>
 
-
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
