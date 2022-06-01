@@ -66,7 +66,7 @@ public class LoanApplication extends AppCompatActivity {
     Double LoanRequestlimit;
     String ContributionBalTxt;
     Double amountRequested;
-    DecimalFormat df=new DecimalFormat("0.00");
+    DecimalFormat df=new DecimalFormat("#,###.00");
     AlertDialog.Builder inProgressrequestAlert;
 
 
@@ -128,13 +128,12 @@ public class LoanApplication extends AppCompatActivity {
 
         if (validUser) {
 
-            if (LoanBalance==0){
-                LoanRequestlimit=ContributionBal-200;
-                LoanLimitTv.setText("GHS "+df.format(LoanRequestlimit));
+            if (ContributionBal==0){
+                LoanLimitTv.setText("NOT AVAILABLE");
             }
 
             else{
-                LoanRequestlimit = ContributionBal - (0.33 * LoanBalance);
+                LoanRequestlimit = ContributionBal * 3;
                 LoanLimitTv.setText("GHS "+df.format(LoanRequestlimit));
             }
 
@@ -154,9 +153,9 @@ public class LoanApplication extends AppCompatActivity {
 
         if (amountRequested<=LoanRequestlimit){
 
-            Log.d(TAG, "setNewPassword: "+pBearerToken);
+            Log.d(TAG, "loanRequest: "+pBearerToken);
 
-            StringRequest stringRequest= new StringRequest(Request.Method.POST, Constants.withdrawal_request, new Response.Listener<String>() {
+            StringRequest stringRequest= new StringRequest(Request.Method.POST, Constants.loanRequest, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
@@ -185,7 +184,7 @@ public class LoanApplication extends AppCompatActivity {
                             inProgressrequestAlert.show();
                             loanRequestInfo.setText(error);
                             loanRequestInfo.setTextColor(Color.RED);
-                            loanRequest.setEnabled(false);
+                            requestButton.setEnabled(false);
                             LoanLimitTv.setText("Not Available");
                         }
 
@@ -215,7 +214,7 @@ public class LoanApplication extends AppCompatActivity {
                     params1.put("amount", AmountET.getText().toString());
                     params1.put("purpose",PurposeET.getText().toString());
                     params1.put("type",typeOfLoan);
-                    params1.put("Installment",periodInstall);
+                    params1.put("months",periodInstall);
 
 
                     return params1;
@@ -260,6 +259,7 @@ public class LoanApplication extends AppCompatActivity {
         AmountET=findViewById(R.id.loanAmtET);
         loanRequestInfo=findViewById(R.id.loanInstruction);
         LoanLimitTv=findViewById(R.id.loanLimitAmt);
+
 //        loanRequest=findViewById(R.id.loanRequestBtn);
 
         SharedPreferences UserDetails = getSharedPreferences("userDetails", Context.MODE_PRIVATE);
@@ -280,7 +280,7 @@ public class LoanApplication extends AppCompatActivity {
 
                 if ( typeOfLoan.isEmpty() || typeOfLoan.equals("Select a loan type")){
 
-                    Toast.makeText(LoanApplication.this, "Select a withdrawal type", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoanApplication.this, "Select a loan type", Toast.LENGTH_SHORT).show();
                 }
                 else if(AmountET.getText().toString().isEmpty()){
                     Toast.makeText(LoanApplication.this, "Enter an amount", Toast.LENGTH_SHORT).show();

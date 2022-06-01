@@ -21,7 +21,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:visibility="gone"
         android:background="#ffffff"
         tools:layout_editor_absoluteX="-14dp"
         tools:layout_editor_absoluteY="-275dp">
@@ -79,7 +79,7 @@
 
 
                     <TextView
-                        android:id="@+id/monthYearTitle"
+                        android:id="@+id/MonthYearTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppinsbold"
@@ -564,11 +564,15 @@
         android:layout_gravity="end|bottom"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="add"
         android:contentDescription="download"
         android:src="@drawable/ic_baseline_arrow_circle_down_25"
+        android:tint="@color/darkBlue"
         app:backgroundTint="@color/darkBlue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/darkBlue" />
 
 
 

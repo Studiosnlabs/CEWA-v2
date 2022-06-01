@@ -29,6 +29,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "MainActivity";
     private static final int INTENT_AUTHENTICATE = 20;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView myAccountLabel;
     TextView loanBalance;
     Button showLoanBalanceBtn;
+    DecimalFormat df=new DecimalFormat("#,###.00");
 
     public void showPopup(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
@@ -103,14 +106,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
         String UserName=UserDetails.getString("userName","n/a");
         String MemberId=UserDetails.getString("memberID","n/a");
-        String ContibutionBal=UserDetails.getString("contributionBal","n/a");
+        String ContributionBal=UserDetails.getString("contributionBal","n/a");
         String loanBal = UserDetails.getString("current_loan_balance", "n/a");
 
 
+        Double ContributionBalance=Double.valueOf(ContributionBal);
+        Double LoanBalance=Double.valueOf(loanBal);
         userName.setText(UserName);
         memberID.setText(MemberId);
-        userContribution.setText("GHS "+ContibutionBal);
-        loanBalance.setText("GHS "+loanBal);
+        userContribution.setText("GHS "+df.format(ContributionBalance));
+        loanBalance.setText("GHS "+df.format(LoanBalance));
         Log.d(TAG, "onCreate: "+memberID);
 
         optionsButton.setOnClickListener(new View.OnClickListener() {

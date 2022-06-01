@@ -52,6 +52,7 @@ public class login extends AppCompatActivity {
     String PasswordReset;
     String hiredDate;
     Double LoanBalance;
+    String StaffNumber;
     String RequestInProgress;
 
 
@@ -86,6 +87,9 @@ public class login extends AppCompatActivity {
                     LoanBalance=object.getDouble("current_loan_balance");
                     PasswordReset= userObj.getString("password_reset");
                     hiredDate=memberObj.getString("hire_date");
+                    email=userObj.getString("email");
+                    StaffNumber=memberObj.getString("staff_number");
+
 
                     String ContributionTxt=Contribution.toString();
                     String MemberIdtxt=memberID.toString();
@@ -99,6 +103,8 @@ public class login extends AppCompatActivity {
                     editor.putString("token",token);
                     editor.putString("hired_date",hiredDate);
                     editor.putString("current_loan_balance",LoanBalTxt);
+                    editor.putString("email",email);
+                    editor.putString("staff_number",StaffNumber);
 
 
 
@@ -107,6 +113,7 @@ public class login extends AppCompatActivity {
                     Log.d(TAG, "onResponse: "+Name);
                     Log.d(TAG, "onResponse: "+memberID);
                     Log.d(TAG, "onResponse: "+token);
+                    Log.d(TAG, "onResponse: staffnum"+StaffNumber);
 
 
                     if (ErrorMess.equals("Incorrect credentials")){

@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,18 +29,27 @@ public class GeneralStatements extends AppCompatActivity {
 
     private static final String TAG = "GeneralStatements";
     ImageView backButton;
-    String MonthSelected;
-    String YearSelected;
+    String FromMonthSelected;
+    String FromYearSelected;
+    String fromDate;
+
+    String ToMonthSelected;
+    String ToYearSelected;
+    String toDateSelected;
     Spinner genYearStartSelect;
     Spinner genMonthStartSelect;
     Spinner genYearEndSelect;
     Spinner genMonthEndSelect;
-    String MonthP;
+    String monthTo;
+    String monthFrom;
+    String yearTo;
+    String yearFrom;
     Button ViewFullGenStatement;
     ProgressBar generalStatementProgressBar;
     Handler handler;
     RelativeLayout genStatementPreview;
     ImageView genSearch;
+    TextView genBalHeader;
 
 
     public void backIntent(){
@@ -78,6 +89,7 @@ public class GeneralStatements extends AppCompatActivity {
         generalStatementProgressBar=findViewById(R.id.genStatementProgressbar);
         genStatementPreview=findViewById(R.id.generalStatementPreview);
         genSearch=findViewById(R.id.genSearch);
+        genBalHeader=findViewById(R.id.genStatementAmt);
 
         genSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,13 +98,18 @@ public class GeneralStatements extends AppCompatActivity {
             }
         });
 
-        ViewFullGenStatement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(GeneralStatements.this,FullGeneralStatement.class);
-                startActivity(intent);
-            }
-        });
+
+        SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
+        String UserName=UserDetails.getString("userName","n/a");
+        String MemberId=UserDetails.getString("memberID","n/a");
+        String ContributionBal=UserDetails.getString("contributionBal","n/a");
+        String loanBal = UserDetails.getString("current_loan_balance", "n/a");
+        String email=UserDetails.getString("email", "n/a");
+        String staffId=UserDetails.getString("staff_number", "n/a");
+
+
+
+       genBalHeader.setText(ContributionBal);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +151,7 @@ public class GeneralStatements extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
                 String selectedItemTextPlain = (String) parent.getItemAtPosition(position);
-                MonthP = selectedItemTextPlain;
+                monthFrom = selectedItemTextPlain;
 //                // If user change the default selection
 //                // First item is disable and it is used for hint
 //                ((TextView) view).setTextColor(Color.WHITE);
@@ -193,8 +210,8 @@ public class GeneralStatements extends AppCompatActivity {
                 }
 
 
-                MonthSelected = selectedItemText;
-                Log.d(TAG, "onItemSelected: item selected");
+                FromMonthSelected = selectedItemText;
+                Log.d(TAG, "onItemSelected: fromMonth"+FromMonthSelected);
             }
 
             @Override
@@ -265,8 +282,8 @@ public class GeneralStatements extends AppCompatActivity {
 //                    }
 
 
-                YearSelected = selectedItemString;
-                Log.d(TAG, "onItemSelected: Year selected");
+                FromYearSelected = selectedItemString;
+                Log.d(TAG, "onItemSelected: From Year selected"+FromMonthSelected);
             }
 
             @Override
@@ -274,6 +291,7 @@ public class GeneralStatements extends AppCompatActivity {
 
             }
         });
+
 
 
 
@@ -310,7 +328,7 @@ public class GeneralStatements extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
                 String selectedItemTextPlain = (String) parent.getItemAtPosition(position);
-                MonthP = selectedItemTextPlain;
+                monthTo = selectedItemTextPlain;
 //                // If user change the default selection
 //                // First item is disable and it is used for hint
 //                ((TextView) view).setTextColor(Color.WHITE);
@@ -369,8 +387,8 @@ public class GeneralStatements extends AppCompatActivity {
                 }
 
 
-                MonthSelected = selectedItemText;
-                Log.d(TAG, "onItemSelected: item selected");
+                ToMonthSelected = selectedItemText;
+                Log.d(TAG, "onItemSelected:toMonthSelected"+ToMonthSelected);
             }
 
             @Override
@@ -452,8 +470,8 @@ public class GeneralStatements extends AppCompatActivity {
 //                    }
 
 
-                YearSelected = selectedItemString;
-                Log.d(TAG, "onItemSelected: Year selected");
+                ToYearSelected = selectedItemString;
+                Log.d(TAG, "onItemSelected: ToYearSelected"+ToYearSelected);
             }
 
             @Override
@@ -463,6 +481,27 @@ public class GeneralStatements extends AppCompatActivity {
         });
 
 
+
+
+
+
+        ViewFullGenStatement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fromDate=FromYearSelected+"-"+FromMonthSelected;
+                toDateSelected=ToYearSelected+"-"+ToMonthSelected;
+                Intent intent=new Intent(GeneralStatements.this,FullGeneralStatement.class);
+                intent.putExtra("from",fromDate);
+                intent.putExtra("to",toDateSelected);
+                intent.putExtra("monthFrom",monthFrom);
+                intent.putExtra("monthTo",monthTo);
+                intent.putExtra("yearFrom",FromYearSelected);
+                intent.putExtra("yearTo",ToYearSelected);
+                Log.d(TAG, "onClick: "+fromDate);
+                Log.d(TAG, "onClick: "+toDateSelected);
+                startActivity(intent);
+            }
+        });
 
 
 

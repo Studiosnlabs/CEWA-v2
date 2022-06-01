@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/loadingtxt"
+        android:id="@+id/genloadingtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loading..."
@@ -18,10 +18,10 @@
         />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/genscrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:visibility="visible"
         android:background="#ffffff"
         tools:layout_editor_absoluteX="-14dp"
         tools:layout_editor_absoluteY="-275dp">
@@ -33,7 +33,7 @@
             android:background="#ffffff">
 
             <RelativeLayout
-                android:id="@+id/payslipRel"
+                android:id="@+id/genpayslipRel"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -77,7 +77,7 @@
 
 
                     <TextView
-                        android:id="@+id/monthYearTitle"
+                        android:id="@+id/genMonthYearTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppinsbold"
@@ -98,7 +98,7 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:id="@+id/Employee_id"
+                            android:id="@+id/genStaffName"
                             android:layout_width="100dp"
                             android:fontFamily="@font/poppinsregular"
                             android:padding="3dip"
@@ -122,7 +122,7 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:id="@+id/TIN"
+                            android:id="@+id/genMemberId"
                             android:layout_width="10dp"
                             android:fontFamily="@font/poppinsregular"
                             android:padding="3dip"
@@ -143,7 +143,7 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:id="@+id/Employee_name"
+                            android:id="@+id/genDivision"
                             android:fontFamily="@font/poppinsregular"
                             android:padding="3dip"
                             android:text="Head Office"
@@ -165,7 +165,7 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:id="@+id/SSF"
+                            android:id="@+id/genStaffId"
                             android:fontFamily="@font/poppinsregular"
                             android:padding="3dip"
                             android:text="1151069"
@@ -187,12 +187,12 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:id="@+id/TIER2"
+                            android:id="@+id/genContact"
                             android:fontFamily="@font/poppinsregular"
                             android:padding="3dip"
                             android:text="kwabenajones@cocobod.net"
                             android:textColor="@color/black"
-                            android:textSize="8sp" />
+                            android:textSize="8sp" />tras
 
 
 
@@ -225,13 +225,13 @@
 
                         <TextView
                             android:fontFamily="@font/poppinsbold"
-                            android:layout_width="100dp"
+                            android:layout_width="80dp"
                             android:text="Description"
                             android:textColor="@color/black"
                             android:textSize="8sp" />
 
                         <TextView
-                            android:layout_width="80dp"
+                            android:layout_width="100dp"
                             android:fontFamily="@font/poppinsbold"
                             android:padding="3dip"
                             android:text="Total Amount"
@@ -239,7 +239,7 @@
                             android:textSize="8sp" />
 
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="50dp"
                             android:fontFamily="@font/poppinsbold"
                             android:padding="3dip"
                             android:text="Balance "
@@ -253,7 +253,7 @@
 
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_view"
+                        android:id="@+id/genrecycler_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -558,7 +558,7 @@
         android:layout_marginBottom="10dp"
         android:contentDescription="download"
         android:src="@drawable/ic_baseline_arrow_circle_down_25"
-        app:backgroundTint="@color/darkBlue"
+        app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

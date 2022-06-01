@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,13 +31,22 @@ public class LoanStatements extends AppCompatActivity {
     ImageView backButton;
     String MonthSelected;
     String YearSelected;
+    String toDateSelected;
     Spinner loanYearStartSelect;
     Spinner loanMonthStartSelect;
     Spinner loanYearEndSelect;
     Spinner loanMonthEndSelect;
+    String ToMonthSelected;
     Handler handler;
     ProgressBar loanProgressBar;
     RelativeLayout loanStatementPreview;
+    String monthTo;
+    String monthFrom;
+    String FromMonthSelected;
+    String FromYearSelected;
+    String fromDate;
+    String ToYearSelected;
+    TextView LoanBalanceHeader;
 
     ImageView loanSearchButton;
     String MonthP;
@@ -78,6 +89,7 @@ public class LoanStatements extends AppCompatActivity {
         loanProgressBar=findViewById(R.id.loanStatementProgressbar);
         loanStatementPreview=findViewById(R.id.loanstatementPreview);
         loanSearchButton=findViewById(R.id.loanSearch);
+        LoanBalanceHeader=findViewById(R.id.loanBalanceAmt);
 
         loanSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +97,33 @@ public class LoanStatements extends AppCompatActivity {
                 showPreview();
             }
         });
+        SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
+        String UserName=UserDetails.getString("userName","n/a");
+        String MemberId=UserDetails.getString("memberID","n/a");
+        String ContributionBal=UserDetails.getString("contributionBal","n/a");
+        String loanBal = UserDetails.getString("current_loan_balance", "n/a");
+        String email=UserDetails.getString("email", "n/a");
+        String staffId=UserDetails.getString("staff_number", "n/a");
+
+
+
+        LoanBalanceHeader.setText(loanBal);
 
 
         viewFullStatement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fromDate=FromYearSelected+"-"+FromMonthSelected;
+                toDateSelected=ToYearSelected+"-"+ToMonthSelected;
                 Intent intent=new Intent(LoanStatements.this,FullLoanStatement.class);
+                intent.putExtra("from",fromDate);
+                intent.putExtra("to",toDateSelected);
+                intent.putExtra("monthFrom",monthFrom);
+                intent.putExtra("monthTo",monthTo);
+                intent.putExtra("yearFrom",FromYearSelected);
+                intent.putExtra("yearTo",ToYearSelected);
+                Log.d(TAG, "onClick: "+fromDate);
+                Log.d(TAG, "onClick: "+toDateSelected);
                 startActivity(intent);
             }
         });
@@ -133,7 +166,7 @@ public class LoanStatements extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
                 String selectedItemTextPlain = (String) parent.getItemAtPosition(position);
-                MonthP = selectedItemTextPlain;
+                monthFrom = selectedItemTextPlain;
 //                // If user change the default selection
 //                // First item is disable and it is used for hint
 //                ((TextView) view).setTextColor(Color.WHITE);
@@ -192,8 +225,8 @@ public class LoanStatements extends AppCompatActivity {
                 }
 
 
-                MonthSelected = selectedItemText;
-                Log.d(TAG, "onItemSelected: item selected");
+                FromMonthSelected = selectedItemText;
+                Log.d(TAG, "onItemSelected: item selected"+FromMonthSelected);
             }
 
             @Override
@@ -276,7 +309,7 @@ public class LoanStatements extends AppCompatActivity {
 //                    }
 
 
-                YearSelected = selectedItemString;
+                FromYearSelected = selectedItemString;
                 Log.d(TAG, "onItemSelected: Year selected");
             }
 
@@ -325,7 +358,7 @@ public class LoanStatements extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
                 String selectedItemTextPlain = (String) parent.getItemAtPosition(position);
-                MonthP = selectedItemTextPlain;
+                monthTo = selectedItemTextPlain;
 //                // If user change the default selection
 //                // First item is disable and it is used for hint
 //                ((TextView) view).setTextColor(Color.WHITE);
@@ -384,7 +417,7 @@ public class LoanStatements extends AppCompatActivity {
                 }
 
 
-                MonthSelected = selectedItemText;
+                ToMonthSelected = selectedItemText;
                 Log.d(TAG, "onItemSelected: item selected");
             }
 
@@ -467,7 +500,7 @@ public class LoanStatements extends AppCompatActivity {
 //                    }
 
 
-                YearSelected = selectedItemString;
+                ToYearSelected = selectedItemString;
                 Log.d(TAG, "onItemSelected: Year selected");
             }
 

@@ -26,7 +26,7 @@ public class successDialog {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(context, PartialWithdrawal.class);
+                Intent intent = new Intent(context, MainActivity.class);
                 activity.startActivity(intent);
             }
         });

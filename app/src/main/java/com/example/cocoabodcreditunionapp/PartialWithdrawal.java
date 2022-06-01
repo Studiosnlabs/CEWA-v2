@@ -64,7 +64,7 @@ public class PartialWithdrawal extends AppCompatActivity {
     Double amountRequested;
     String pBearerToken;
     AlertDialog.Builder inProgressrequestAlert;
-    DecimalFormat df=new DecimalFormat("0.00");
+    DecimalFormat df=new DecimalFormat("#,###.00");
 
 
     private static final String TAG = "Withdrawal";
