@@ -1,5 +1,7 @@
 package com.example.cocoabodcreditunionapp;
 
+import static java.lang.Thread.sleep;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -21,18 +24,32 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
-public class GeneralStatements extends AppCompatActivity {
+public class GeneralStatements extends AppCompatActivity implements Runnable {
 
     private static final String TAG = "GeneralStatements";
     ImageView backButton;
     String FromMonthSelected;
     String FromYearSelected;
     String fromDate;
-
+    String pBearerToken;
     String ToMonthSelected;
     String ToYearSelected;
     String toDateSelected;
@@ -48,21 +65,44 @@ public class GeneralStatements extends AppCompatActivity {
     ProgressBar generalStatementProgressBar;
     Handler handler;
     RelativeLayout genStatementPreview;
-    ImageView genSearch;
     TextView genBalHeader;
+    ProgressBar CalProgressBar;
+
+    CountDownTimer expiry;
+    String timerActive="";
 
 
-    public void backIntent(){
+    public void expireApp() {
+        expiry = new CountDownTimer(100000, 1000) {
+            @Override
+            public void onTick(long l) {
+                timerActive = "active";
 
-        Intent intent=new Intent(GeneralStatements.this,MainActivity.class);
+                Log.d(TAG, "onTick: counting down to time out");
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d(TAG, "onFinish: app killed");
+                finish();
+
+
+            }
+        }.start();
+    }
+
+
+    public void backIntent() {
+
+        Intent intent = new Intent(GeneralStatements.this, MainActivity.class);
         startActivity(intent);
 
     }
 
-    public void showPreview(){
+    public void showPreview() {
 
         generalStatementProgressBar.setVisibility(View.VISIBLE);
-        handler=new Handler();
+        handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -70,7 +110,7 @@ public class GeneralStatements extends AppCompatActivity {
                 generalStatementProgressBar.setVisibility(View.GONE);
 
             }
-        },2000);
+        }, 2000);
 
     }
 
@@ -80,36 +120,29 @@ public class GeneralStatements extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_statements);
 
-        backButton=findViewById(R.id.genStatementBack);
-        genMonthStartSelect=findViewById(R.id.genStatementStartMonthSelector);
-        genYearStartSelect=findViewById(R.id.genStatementStartYearSelector);
-        genYearEndSelect=findViewById(R.id.genStatementEndYearSelector);
-        genMonthEndSelect=findViewById(R.id.genStatementEndMonthSelector);
-        ViewFullGenStatement=findViewById(R.id.viewFullGenStatement);
-        generalStatementProgressBar=findViewById(R.id.genStatementProgressbar);
-        genStatementPreview=findViewById(R.id.generalStatementPreview);
-        genSearch=findViewById(R.id.genSearch);
-        genBalHeader=findViewById(R.id.genStatementAmt);
-
-        genSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPreview();
-            }
-        });
+        backButton = findViewById(R.id.genStatementBack);
+        genMonthStartSelect = findViewById(R.id.genStatementStartMonthSelector);
+        genYearStartSelect = findViewById(R.id.genStatementStartYearSelector);
+        genYearEndSelect = findViewById(R.id.genStatementEndYearSelector);
+        genMonthEndSelect = findViewById(R.id.genStatementEndMonthSelector);
+        ViewFullGenStatement = findViewById(R.id.genSearch);
+        generalStatementProgressBar = findViewById(R.id.genStatementProgressbar);
+        genStatementPreview = findViewById(R.id.generalStatementPreview);
+        genBalHeader = findViewById(R.id.genStatementAmt);
+        CalProgressBar = findViewById(R.id.genStatementProgressbar);
 
 
-        SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
-        String UserName=UserDetails.getString("userName","n/a");
-        String MemberId=UserDetails.getString("memberID","n/a");
-        String ContributionBal=UserDetails.getString("contributionBal","n/a");
+        SharedPreferences UserDetails = getSharedPreferences("userDetails", Context.MODE_PRIVATE);
+        String UserName = UserDetails.getString("userName", "n/a");
+        String MemberId = UserDetails.getString("memberID", "n/a");
+        String ContributionBal = UserDetails.getString("contributionBal", "n/a");
         String loanBal = UserDetails.getString("current_loan_balance", "n/a");
-        String email=UserDetails.getString("email", "n/a");
-        String staffId=UserDetails.getString("staff_number", "n/a");
+        String email = UserDetails.getString("email", "n/a");
+        String staffId = UserDetails.getString("staff_number", "n/a");
+        pBearerToken = UserDetails.getString("token", "n/a");
 
 
-
-       genBalHeader.setText(ContributionBal);
+        genBalHeader.setText(ContributionBal);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +150,6 @@ public class GeneralStatements extends AppCompatActivity {
                 backIntent();
             }
         });
-
 
 
         Calendar thisMonth = Calendar.getInstance();
@@ -211,7 +243,7 @@ public class GeneralStatements extends AppCompatActivity {
 
 
                 FromMonthSelected = selectedItemText;
-                Log.d(TAG, "onItemSelected: fromMonth"+FromMonthSelected);
+                Log.d(TAG, "onItemSelected: fromMonth" + FromMonthSelected);
             }
 
             @Override
@@ -219,7 +251,6 @@ public class GeneralStatements extends AppCompatActivity {
 
             }
         });
-
 
 
         Calendar thisYear = Calendar.getInstance();
@@ -283,7 +314,7 @@ public class GeneralStatements extends AppCompatActivity {
 
 
                 FromYearSelected = selectedItemString;
-                Log.d(TAG, "onItemSelected: From Year selected"+FromMonthSelected);
+                Log.d(TAG, "onItemSelected: From Year selected" + FromMonthSelected);
             }
 
             @Override
@@ -291,10 +322,6 @@ public class GeneralStatements extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
 
         Calendar thisMonthEnd = Calendar.getInstance();
@@ -388,7 +415,7 @@ public class GeneralStatements extends AppCompatActivity {
 
 
                 ToMonthSelected = selectedItemText;
-                Log.d(TAG, "onItemSelected:toMonthSelected"+ToMonthSelected);
+                Log.d(TAG, "onItemSelected:toMonthSelected" + ToMonthSelected);
             }
 
             @Override
@@ -396,18 +423,6 @@ public class GeneralStatements extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         Calendar thisYearEnd = Calendar.getInstance();
@@ -448,8 +463,8 @@ public class GeneralStatements extends AppCompatActivity {
         };
 
         spinnerArrayAdapterEnd.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-      genYearEndSelect.setAdapter(spinnerArrayAdapter);
-      genYearEndSelect.setSelection(spinnerArrayAdapter.getPosition(yearrange + 1));
+        genYearEndSelect.setAdapter(spinnerArrayAdapter);
+        genYearEndSelect.setSelection(spinnerArrayAdapter.getPosition(yearrange + 1));
 
         genYearEndSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -471,7 +486,7 @@ public class GeneralStatements extends AppCompatActivity {
 
 
                 ToYearSelected = selectedItemString;
-                Log.d(TAG, "onItemSelected: ToYearSelected"+ToYearSelected);
+                Log.d(TAG, "onItemSelected: ToYearSelected" + ToYearSelected);
             }
 
             @Override
@@ -481,46 +496,171 @@ public class GeneralStatements extends AppCompatActivity {
         });
 
 
-
-
-
-
         ViewFullGenStatement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fromDate=FromYearSelected+"-"+FromMonthSelected;
-                toDateSelected=ToYearSelected+"-"+ToMonthSelected;
-                Intent intent=new Intent(GeneralStatements.this,FullGeneralStatement.class);
-                intent.putExtra("from",fromDate);
-                intent.putExtra("to",toDateSelected);
-                intent.putExtra("monthFrom",monthFrom);
-                intent.putExtra("monthTo",monthTo);
-                intent.putExtra("yearFrom",FromYearSelected);
-                intent.putExtra("yearTo",ToYearSelected);
-                Log.d(TAG, "onClick: "+fromDate);
-                Log.d(TAG, "onClick: "+toDateSelected);
-                startActivity(intent);
+
+
+                fromDate = FromYearSelected + "-" + FromMonthSelected;
+                toDateSelected = ToYearSelected + "-" + ToMonthSelected;
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.genStatement,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                CalProgressBar.setVisibility(View.VISIBLE);
+
+                                try {
+                                    JSONObject object = new JSONObject(response);
+                                    JSONObject message = object.optJSONObject("message");
+                                    Double OB= message.optDouble("opening_balance");
+                                    Log.d(TAG, "onResponse: "+OB);
+
+
+
+                                    if (OB < 0) {
+
+                                        Toast.makeText(GeneralStatements.this, "This statement record is not available", Toast.LENGTH_SHORT).show();
+                                        CalProgressBar.setVisibility(View.GONE);
+                                    } else {
+
+//                                        fromDate = FromYearSelected + "-" + FromMonthSelected;
+//                                        toDateSelected = ToYearSelected + "-" + ToMonthSelected;
+                                        Intent intent = new Intent(GeneralStatements.this, FullGeneralStatement.class);
+                                        intent.putExtra("from", fromDate);
+                                        intent.putExtra("to", toDateSelected);
+                                        intent.putExtra("monthFrom", monthFrom);
+                                        intent.putExtra("monthTo", monthTo);
+                                        intent.putExtra("yearFrom", FromYearSelected);
+                                        intent.putExtra("yearTo", ToYearSelected);
+                                        Log.d(TAG, "onClick: " + fromDate);
+                                        Log.d(TAG, "onClick: " + toDateSelected);
+                                        startActivity(intent);
+
+
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+//
+
+                            }
+
+
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                                Log.d(TAG, "onErrorResponse: " + error.toString());
+                                // Toast.makeText(PaySlipPage.this, error.toString(), Toast.LENGTH_LONG).show();
+                                Toast toast = Toast.makeText(getApplicationContext(), "Server Error Please check internet connection and try again! ", Toast.LENGTH_SHORT);
+
+                                toast.show();
+                            }
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params3 = new HashMap<String, String>();
+
+                        params3.put("from", fromDate);
+                        params3.put("to", toDateSelected);
+                        params3.put("statement_type", "GENERAL");
+
+
+                        return params3;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = new HashMap<>();
+
+                        headers.put("Authorization", "Bearer " + pBearerToken);
+                        headers.put("Content-Type", "application/x-www-form-urlencoded");
+                        // headers.put("Accept","application/json");
+                        return headers;
+                    }
+                };
+
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                queue.add(stringRequest);
+
+
             }
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GeneralStatements.this, MainActivity.class);
+        startActivity(intent);
+        //  super.onBackPressed();
+    }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
 
+    @Override
+    protected void onPause() {
 
 
+        Log.d(TAG, "onPause: app has paused");
+        super.onPause();
+    }
 
+    @Override
+    protected void onStop() {
+//        CalendarForm obj = new CalendarForm();
+//        t = new Thread(obj);
+//        t.start();
+//        Log.d(TAG, "onStop: app has stopped");
+//        expireApp();
+        super.onStop();
+    }
 
+    @Override
+    public void run() {
+        try {
+            sleep(1 * 60 * 1000);
+            Log.d(TAG, "run: timer has started");
+            // Wipe your valuable data here
+            System.exit(0);
+        } catch (InterruptedException e) {
+            Log.d(TAG, "run: timer did not start");
+            return;
+        }
+    }
 
+    @Override
+    protected void onDestroy() {
+
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+
+        super.onDestroy();
     }
 
 
 
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+

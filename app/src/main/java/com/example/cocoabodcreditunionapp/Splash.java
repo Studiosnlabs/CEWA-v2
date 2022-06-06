@@ -31,7 +31,7 @@ public class Splash extends AppCompatActivity {
 
                 if (!userName.isEmpty() && !userName.equals("n/a")){
 
-                    Intent intent=new Intent(Splash.this, MainActivity.class);
+                    Intent intent=new Intent(Splash.this, login.class);
                     startActivity(intent);
                     finish();
 

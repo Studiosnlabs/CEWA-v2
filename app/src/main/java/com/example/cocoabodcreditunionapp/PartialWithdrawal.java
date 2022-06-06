@@ -1,5 +1,7 @@
 package com.example.cocoabodcreditunionapp;
 
+import static java.lang.Thread.sleep;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class PartialWithdrawal extends AppCompatActivity {
+public class PartialWithdrawal extends AppCompatActivity  implements Runnable {
 
     ImageView backButton;
     Spinner type;
@@ -65,6 +68,29 @@ public class PartialWithdrawal extends AppCompatActivity {
     String pBearerToken;
     AlertDialog.Builder inProgressrequestAlert;
     DecimalFormat df=new DecimalFormat("#,###.00");
+
+    CountDownTimer expiry;
+    String timerActive="";
+
+
+    public void expireApp() {
+        expiry = new CountDownTimer(100000, 1000) {
+            @Override
+            public void onTick(long l) {
+                timerActive = "active";
+
+                Log.d(TAG, "onTick: counting down to time out");
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d(TAG, "onFinish: app killed");
+                finish();
+
+
+            }
+        }.start();
+    }
 
 
     private static final String TAG = "Withdrawal";
@@ -388,4 +414,65 @@ public class PartialWithdrawal extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PartialWithdrawal.this, MainActivity.class);
+        startActivity(intent);
+      //  super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+
+
+        Log.d(TAG, "onPause: app has paused");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+//        CalendarForm obj = new CalendarForm();
+//        t = new Thread(obj);
+//        t.start();
+//        Log.d(TAG, "onStop: app has stopped");
+//        expireApp();
+        super.onStop();
+    }
+
+    @Override
+    public void run() {
+        try {
+            sleep(1 * 60 * 1000);
+            Log.d(TAG, "run: timer has started");
+            // Wipe your valuable data here
+            System.exit(0);
+        } catch (InterruptedException e) {
+            Log.d(TAG, "run: timer did not start");
+            return;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+
+        super.onDestroy();
+    }
+
+
+
+
+
+
+
 }

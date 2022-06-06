@@ -95,7 +95,7 @@
                     android:text="MY ACCOUNTS"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/Finiicons"
@@ -107,11 +107,10 @@
 
                 <ImageView
                     android:id="@+id/businessMan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="100dp"
-                    android:src="@drawable/cewalogo" />
+                    android:src="@drawable/happyfamimg" />
 
 
             </RelativeLayout>
@@ -136,7 +135,7 @@
             android:id="@+id/accountDetRel"
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="60dp"
             android:background="@drawable/ic_balancerec"
             android:padding="5dp">
 
@@ -249,6 +248,7 @@
                     android:layout_below="@+id/LuserMemberID"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/poppinsbold"
+                    android:layout_marginTop="10dp"
                     android:text="GHS 67,0058"
                     android:textColor="@color/white"
                     android:textSize="23sp" />
@@ -439,7 +439,7 @@
                                 android:layout_marginTop="20dp"
                                 android:layout_toEndOf="@+id/genStatementImage"
                                 android:fontFamily="@font/poppinsemibold"
-                                android:text="GENERAL STATEMENT"
+                                android:text="MEMBER STATEMENT"
                                 android:textColor="@color/darkBlue"
                                 android:textSize="13sp" />
 
@@ -456,8 +456,8 @@
                     android:id="@+id/quickActionsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
+                   android:layout_marginLeft="70dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppinsbold"
                     android:text="Quick Actions"
                     android:textColor="@color/black" />

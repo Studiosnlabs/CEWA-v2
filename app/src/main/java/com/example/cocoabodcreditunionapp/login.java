@@ -1,10 +1,18 @@
 package com.example.cocoabodcreditunionapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
@@ -227,6 +235,50 @@ public class login extends AppCompatActivity {
         EmailET=findViewById(R.id.userNameET);
 
         Login=findViewById(R.id.getverificationBtn);
+
+
+
+        ActivityResultLauncher<Intent> authActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // There are no request codes
+                            Intent data = result.getData();
+                            Intent intent=new Intent(login.this,MainActivity.class);
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
+
+        SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
+        String UserName=UserDetails.getString("userName","n/a");
+        String MemberId=UserDetails.getString("memberID","n/a");
+
+
+        if (!MemberId.equals("n/a")){
+
+            if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                KeyguardManager km=(KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+                if(km.isKeyguardSecure()){
+                    Intent auhtIntent=km.createConfirmDeviceCredentialIntent("CEWA","PLEASE UNLOCK YOUR PHONE");
+                    authActivityResultLauncher.launch(auhtIntent);
+
+                }
+
+            }
+
+        }
+        else {
+            Log.d(TAG, "onCreate: no login");
+        }
+
+
+
 
         PasswordET.setOnTouchListener(new View.OnTouchListener() {
             @Override

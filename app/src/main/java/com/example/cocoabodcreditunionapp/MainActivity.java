@@ -1,5 +1,7 @@
 package com.example.cocoabodcreditunionapp;
 
+import static java.lang.Thread.sleep;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -17,6 +19,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -31,7 +34,7 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener , Runnable {
     private static final String TAG = "MainActivity";
     private static final int INTENT_AUTHENTICATE = 20;
     Button showBalanceBtn;
@@ -55,6 +58,30 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView loanBalance;
     Button showLoanBalanceBtn;
     DecimalFormat df=new DecimalFormat("#,###.00");
+    CountDownTimer expiry;
+    String timerActive="";
+    Context context;
+
+
+    public void expireApp() {
+        expiry = new CountDownTimer(100000, 1000) {
+            @Override
+            public void onTick(long l) {
+                timerActive = "active";
+
+                Log.d(TAG, "onTick: counting down to time out");
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d(TAG, "onFinish: app killed");
+                finish();
+
+
+            }
+        }.start();
+    }
+
 
     public void showPopup(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
@@ -102,6 +129,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         userContribution=findViewById(R.id.userAccountBalance);
         loanBalance=findViewById(R.id.LuserAccountBalance);
         memberID=findViewById(R.id.userMemberID);
+
+        context=getApplicationContext();
 
         SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
         String UserName=UserDetails.getString("userName","n/a");
@@ -286,6 +315,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
        // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.nav_logout:
+                SharedPreferences settings = context.getSharedPreferences("PreferencesName", Context.MODE_PRIVATE);
+                settings.edit().clear().commit();
                 Intent intent = new Intent(MainActivity.this, login.class);
                 startActivity(intent);
                 return true;
@@ -302,5 +333,69 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onBackPressed() {
 
        moveTaskToBack(true);
+        Log.d(TAG, "onStop: app has been moved to the back");
+        expireApp();
+
     }
+
+    @Override
+    protected void onResume() {
+
+        Log.d(TAG, "onResume: App has resumed");
+        
+        
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+
+//        if (!this.isFinishing()){
+//            Log.d(TAG, "onPause: app has paused");
+//            super.onPause();
+//        } else {
+//
+//            Log.d(TAG, "onStop: app has stopped");
+//            expireApp();
+//
+//        }
+
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+//        CalendarForm obj = new CalendarForm();
+//        t = new Thread(obj);
+//        t.start();
+        super.onStop();
+
+    }
+
+    @Override
+    public void run() {
+        try {
+            sleep(1 * 60 * 1000);
+            Log.d(TAG, "run: timer has started");
+            // Wipe your valuable data here
+            System.exit(0);
+        } catch (InterruptedException e) {
+            Log.d(TAG, "run: timer did not start");
+            return;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+
+        super.onDestroy();
+    }
+
+
+
+
 }

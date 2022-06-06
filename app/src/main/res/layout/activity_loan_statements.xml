@@ -34,11 +34,40 @@
                 android:id="@+id/LoanTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
                 android:fontFamily="@font/poppinsemibold"
                 android:text="LOAN STATEMENTS"
                 android:textColor="@color/white" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LoanTitle"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/pInfoIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_baseline_info_24" />
+
+                <TextView
+                    android:id="@+id/LoanInfo"
+                    android:layout_width="264dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/pInfoIcon"
+                    android:text="To get your loan statement for a period, select the month and year you want the statement to start and the month and year you will like the
+the statement to end in and click generate!"
+                    android:gravity="fill_horizontal"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/loanBalanceTitle"
@@ -47,6 +76,7 @@
                 android:layout_below="@id/LoanTitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:fontFamily="@font/poppinsemibold"
                 android:text="LOAN BALANCE"
                 android:textColor="@color/white" />
@@ -59,6 +89,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/poppinsbold"
                 android:text="GHS 700"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:textSize="38sp" />
 
@@ -72,6 +103,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/loanStatementHeader"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
             android:paddingBottom="10dp">
 
             <TextView
@@ -79,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="50dp"
                 android:fontFamily="@font/poppinsemibold"
                 android:text="Start Date"
                 android:textColor="@color/black"
@@ -103,7 +137,6 @@
                 android:background="@drawable/black_border" />
 
 
-
         </RelativeLayout>
 
 
@@ -116,6 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/startDateSelectRel"
+            android:layout_marginLeft="20dp"
             android:paddingBottom="10dp">
 
             <TextView
@@ -146,14 +180,15 @@
                 android:layout_toEndOf="@id/loanStatementEndMonthSelector"
                 android:background="@drawable/black_border" />
 
-            <ImageView
+            <Button
                 android:id="@+id/loanSearch"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_below="@id/EndDateLabel"
-                android:layout_marginLeft="15dp"
-                android:layout_toEndOf="@id/loanStatementEndYearSelector"
-                android:src="@drawable/ic_baseline_search_24" />
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/loanStatementEndYearSelector"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_baseline_search_24"
+                android:text="GENERATE" />
 
         </RelativeLayout>
 
@@ -330,9 +365,18 @@
             android:visibility="gone"
             />
 
-
+        <ProgressBar
+            android:id="@+id/loanStatement_progress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
     </RelativeLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
