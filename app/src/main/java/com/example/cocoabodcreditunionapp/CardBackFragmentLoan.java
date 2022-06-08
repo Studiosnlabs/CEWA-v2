@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 
-public class CardBackFragment extends Fragment {
+public class CardBackFragmentLoan extends Fragment {
 
 
     View view;
@@ -27,7 +27,7 @@ public class CardBackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_card_back, container, false);
+        view= inflater.inflate(R.layout.fragment_card_back_loan, container, false);
         initUI();
         return view;
     }
@@ -35,7 +35,7 @@ public class CardBackFragment extends Fragment {
     public void initUI(){
 
         context=getContext();
-        contributionAmt=view.findViewById(R.id.cbuserAccountBalance);
+        contributionAmt=view.findViewById(R.id.lbuserAccountBalance);
         contributionTextLabel=view.findViewById(R.id.memberIdTitle);
 
         SharedPreferences UserDetails=getActivity().getSharedPreferences("userDetails", Context.MODE_PRIVATE);
@@ -45,11 +45,9 @@ public class CardBackFragment extends Fragment {
         String loanBal = UserDetails.getString("current_loan_balance", "n/a");
 
 
-        Double ContributionBalance=Double.valueOf(ContributionBal);
+        Double ContributionBalance=Double.valueOf(loanBal);
         contributionAmt.setText("GHS "+df.format(ContributionBalance));
 
 
     }
-
-
 }

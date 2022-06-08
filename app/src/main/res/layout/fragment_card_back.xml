@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     android:padding="5dp"
     android:background="@drawable/ic_balancerec"
     tools:context=".CardBackFragment">
@@ -16,7 +16,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppinsemibold"
-            android:text="Contribution"
+            android:text="Contribution Balance"
             android:textColor="@color/white"
             android:textSize="12sp" />
 
@@ -34,7 +34,7 @@
 
 
         <TextView
-            android:id="@+id/userAccountBalance"
+            android:id="@+id/cbuserAccountBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/userMemberID"

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="120dp"
+    android:padding="5dp"
     android:background="@drawable/ic_balancerec"
     tools:context=".CardBackFragment">
 
@@ -15,8 +16,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/poppinsemibold"
-        android:visibility="gone"
-        android:text="Contribution"
+        android:text="Loan Balance"
         android:textColor="@color/white"
         android:textSize="12sp" />
 
@@ -34,26 +34,15 @@
 
 
     <TextView
-        android:id="@+id/ContributionTag"
+        android:id="@+id/lbuserAccountBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/userMemberID"
-        android:layout_centerInParent="true"
-        android:fontFamily="@font/poppinsemibold"
-        android:text="Contribution Balance"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/ttv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ContributionTag"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppinsregular"
-        android:text="TAP TO VIEW"
+        android:fontFamily="@font/poppinsbold"
+        android:text="GHS 67,0058"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="23sp" />
 
 
 

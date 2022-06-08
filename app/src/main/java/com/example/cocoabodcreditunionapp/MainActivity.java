@@ -69,7 +69,24 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     CountDownTimer expiry;
     String timerActive="";
     Context context;
+    Boolean showBackLoan;
     private int shortAnimationDuration;
+
+    Fragment fragment;
+    FrameLayout Frame;
+    FrameLayout loanFrame;
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    Fragment loanfragment;
+    FragmentManager loanfragmentManager = getSupportFragmentManager();
+    FragmentTransaction loanfragmentTransaction = fragmentManager.beginTransaction();
+
+    CardBackFragment cardBackFragment=new CardBackFragment();
+    CardFrontFragment cardFrontFragment=new CardFrontFragment();
+    CardBackFragmentLoan cardBackFragmentLoan=new CardBackFragmentLoan();
+    CardFrontFragmentLoan cardFrontFragmentLoan=new CardFrontFragmentLoan();
+    TextView cardBackBal;
 
 
 
@@ -123,6 +140,167 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     }
 
+    private void flipCard(){
+
+
+
+        if (showingBack) {
+            showingBack = false;
+
+            // Create and commit a new fragment transaction that adds the fragment for
+            // the back of the card, uses custom animations, and is part of the fragment
+            // manager's back stack.
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+
+                    // Replace the default fragment animations with animator resources
+                    // representing rotations when switching to the back of the card, as
+                    // well as animator resources representing rotations when flipping
+                    // back to the front (e.g. when the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.animator.card_flip_right_in,
+                            R.animator.card_flip_right_out,
+                            R.animator.card_flip_left_in,
+                            R.animator.card_flip_left_out)
+
+                    // Replace any fragments currently in the container view with a
+                    // fragment representing the next page (indicated by the
+                    // just-incremented currentPage variable).
+
+                    .replace(R.id.contributionBalFrame, cardFrontFragment)
+
+                    // Add this transaction to the back stack, allowing users to press
+                    // Back to get to the front of the card.
+                    .addToBackStack(null)
+
+                    // Commit the transaction.
+                    .commit();
+            return;
+        }
+
+        // Flip to the back.
+
+        showingBack = true;
+
+        // Create and commit a new fragment transaction that adds the fragment for
+        // the back of the card, uses custom animations, and is part of the fragment
+        // manager's back stack.
+
+
+
+
+        getSupportFragmentManager()
+                .beginTransaction()
+
+                // Replace the default fragment animations with animator resources
+                // representing rotations when switching to the back of the card, as
+                // well as animator resources representing rotations when flipping
+                // back to the front (e.g. when the system Back button is pressed).
+                .setCustomAnimations(
+                        R.animator.card_flip_right_in,
+                        R.animator.card_flip_right_out,
+                        R.animator.card_flip_left_in,
+                        R.animator.card_flip_left_out)
+
+                // Replace any fragments currently in the container view with a
+                // fragment representing the next page (indicated by the
+                // just-incremented currentPage variable).
+
+                .replace(R.id.contributionBalFrame, cardBackFragment)
+
+                // Add this transaction to the back stack, allowing users to press
+                // Back to get to the front of the card.
+                .addToBackStack(null)
+
+                // Commit the transaction.
+                .commit();
+
+
+
+    }
+
+    private void flipCardLoan(){
+
+
+
+        if (showBackLoan) {
+            showBackLoan = false;
+
+            // Create and commit a new fragment transaction that adds the fragment for
+            // the back of the card, uses custom animations, and is part of the fragment
+            // manager's back stack.
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+
+                    // Replace the default fragment animations with animator resources
+                    // representing rotations when switching to the back of the card, as
+                    // well as animator resources representing rotations when flipping
+                    // back to the front (e.g. when the system Back button is pressed).
+                    .setCustomAnimations(
+                            R.animator.card_flip_right_in,
+                            R.animator.card_flip_right_out,
+                            R.animator.card_flip_left_in,
+                            R.animator.card_flip_left_out)
+
+                    // Replace any fragments currently in the container view with a
+                    // fragment representing the next page (indicated by the
+                    // just-incremented currentPage variable).
+
+                    .replace(R.id.loanBalFrame, cardFrontFragmentLoan)
+
+                    // Add this transaction to the back stack, allowing users to press
+                    // Back to get to the front of the card.
+                    .addToBackStack(null)
+
+                    // Commit the transaction.
+                    .commit();
+            return;
+        }
+
+        // Flip to the back.
+
+        showBackLoan = true;
+
+        // Create and commit a new fragment transaction that adds the fragment for
+        // the back of the card, uses custom animations, and is part of the fragment
+        // manager's back stack.
+
+
+
+
+        getSupportFragmentManager()
+                .beginTransaction()
+
+                // Replace the default fragment animations with animator resources
+                // representing rotations when switching to the back of the card, as
+                // well as animator resources representing rotations when flipping
+                // back to the front (e.g. when the system Back button is pressed).
+                .setCustomAnimations(
+                        R.animator.card_flip_right_in,
+                        R.animator.card_flip_right_out,
+                        R.animator.card_flip_left_in,
+                        R.animator.card_flip_left_out)
+
+                // Replace any fragments currently in the container view with a
+                // fragment representing the next page (indicated by the
+                // just-incremented currentPage variable).
+
+                .replace(R.id.loanBalFrame, cardBackFragmentLoan)
+
+                // Add this transaction to the back stack, allowing users to press
+                // Back to get to the front of the card.
+                .addToBackStack(null)
+
+                // Commit the transaction.
+                .commit();
+
+
+
+    }
+
+
 
 
 
@@ -134,6 +312,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(R.layout.activity_main);
 
         showingBack=false;
+        showBackLoan=false;
         showBalanceBtn = findViewById(R.id.showBalance);
 
         showLoanBalanceBtn=findViewById(R.id.LshowBalance);
@@ -160,6 +339,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         businessMan=findViewById(R.id.businessMan);
         finiIcons=findViewById(R.id.Finiicons);
+        Frame=findViewById(R.id.contributionBalFrame);
+        loanFrame=findViewById(R.id.loanBalFrame);
 
 
 
@@ -188,6 +369,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         userContribution.setText("GHS "+df.format(ContributionBalance));
         loanBalance.setText("GHS "+df.format(LoanBalance));
         Log.d(TAG, "onCreate: "+memberID);
+
 
         optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,6 +448,41 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
 
+
+        fragmentManager=getSupportFragmentManager();
+
+        fragment=fragmentManager.findFragmentById(R.id.contributionBalFrame);
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contributionBalFrame, cardFrontFragment);
+        fragmentTransaction.commit();
+
+
+//        LOAN card Fragment
+        loanfragmentManager=getSupportFragmentManager();
+
+        loanfragment=loanfragmentManager.findFragmentById(R.id.loanBalFrame);
+
+        loanfragmentTransaction = loanfragmentManager.beginTransaction();
+        loanfragmentTransaction.replace(R.id.loanBalFrame, cardFrontFragmentLoan);
+        loanfragmentTransaction.commit();
+
+
+        Frame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                flipCard();
+
+            }
+        });
+
+        loanFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flipCardLoan();
+            }
+        });
 
 
 
@@ -369,10 +586,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+
        // Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.nav_logout:
-                SharedPreferences settings = context.getSharedPreferences("PreferencesName", Context.MODE_PRIVATE);
+                SharedPreferences settings = context.getSharedPreferences("userDetails", Context.MODE_PRIVATE);
                 settings.edit().clear().commit();
                 Intent intent = new Intent(MainActivity.this, login.class);
                 startActivity(intent);
