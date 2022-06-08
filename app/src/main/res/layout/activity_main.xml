@@ -35,7 +35,7 @@
                     android:id="@+id/userToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="50dp"
                     android:visibility="gone">
 
                     <include layout="@layout/toolbar_snippet" />
@@ -54,12 +54,12 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:src="@drawable/cewalogo"
-                        android:visibility="invisible" />
+                        android:visibility="gone" />
 
 
 
                     <TextView
-                        android:visibility="invisible"
+                        android:visibility="gone"
                         android:id="@+id/welcomeMessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:visibility="invisible"
+                        android:visibility="gone"
                         android:id="@+id/userName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="100dp"
                     android:src="@drawable/finicons"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/businessMan"
@@ -118,7 +118,7 @@
 <HorizontalScrollView
     android:id="@+id/balancesScroll"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     android:scrollbars="none"
     android:layout_marginTop="250dp"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -131,13 +131,15 @@
         >
 
 
+
         <RelativeLayout
             android:id="@+id/accountDetRel"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="60dp"
             android:background="@drawable/ic_balancerec"
-            android:padding="5dp">
+            android:padding="5dp"
+           >
 
 
             <RelativeLayout
@@ -152,7 +154,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/poppinsemibold"
-                    android:text="Contribution"
+                    android:text="Contribution Balance"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -192,6 +194,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
+                android:visibility="gone"
                 android:background="@drawable/black_round_button"
                 android:text="show my balance"
                 android:textSize="12sp"
@@ -205,7 +208,7 @@
         <RelativeLayout
             android:id="@+id/LaccountDetRel"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="50dp"
             android:layout_toEndOf="@id/accountDetRel"
@@ -247,8 +250,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LuserMemberID"
                     android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/poppinsbold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppinsbold"
                     android:text="GHS 67,0058"
                     android:textColor="@color/white"
                     android:textSize="23sp" />
@@ -263,6 +266,7 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="20dp"
                 android:textSize="12sp"
+                android:visibility="gone"
                 android:background="@drawable/black_round_button"
                 android:text="show my balance"
                 android:textColor="@color/white" />
@@ -285,10 +289,11 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/cardsRel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="40dp">
+                    android:layout_marginTop="10dp">
 
 
                     <androidx.cardview.widget.CardView
@@ -417,6 +422,7 @@
                         android:layout_height="76dp"
                         android:layout_below="@+id/loanStatementCard"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="20dp"
                         android:layout_marginTop="10dp">
 
                         <RelativeLayout
@@ -451,16 +457,6 @@
 
 
                 </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/quickActionsLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                   android:layout_marginLeft="70dp"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:text="Quick Actions"
-                    android:textColor="@color/black" />
 
 
             </RelativeLayout>

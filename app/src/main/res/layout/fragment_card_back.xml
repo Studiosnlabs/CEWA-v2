@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="100dp"
+    android:padding="5dp"
+    android:background="@drawable/ic_balancerec"
+    tools:context=".CardBackFragment">
+
+
+
+        <TextView
+            android:id="@+id/memberIdTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppinsemibold"
+            android:text="Contribution"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/userMemberID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/memberIdTitle"
+            android:layout_alignStart="@+id/memberIdTitle"
+            android:fontFamily="@font/poppinsregular"
+            android:text="1156897"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/userAccountBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userMemberID"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsbold"
+            android:text="GHS 67,0058"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
+
+
+
+
+</RelativeLayout>

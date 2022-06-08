@@ -11,7 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -26,6 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -57,10 +64,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView myAccountLabel;
     TextView loanBalance;
     Button showLoanBalanceBtn;
+    Boolean showingBack;
     DecimalFormat df=new DecimalFormat("#,###.00");
     CountDownTimer expiry;
     String timerActive="";
     Context context;
+    private int shortAnimationDuration;
+
 
 
     public void expireApp() {
@@ -91,11 +101,39 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
 
+    private void crossfade(View firstView, View secondView){
+
+        secondView.setAlpha(0f);
+        secondView.setVisibility(View.VISIBLE);
+
+        secondView.animate()
+                .alpha(1f)
+                .setDuration(shortAnimationDuration)
+                .setListener(null);
+        firstView.animate()
+                .alpha(0f)
+                .setDuration(shortAnimationDuration)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        firstView.setVisibility(View.GONE);
+                    }
+                });
+
+
+    }
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        showingBack=false;
         showBalanceBtn = findViewById(R.id.showBalance);
 
         showLoanBalanceBtn=findViewById(R.id.LshowBalance);
@@ -123,6 +161,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         businessMan=findViewById(R.id.businessMan);
         finiIcons=findViewById(R.id.Finiicons);
 
+
+
         myAccountLabel=findViewById(R.id.accountLabel);
 
         userName=findViewById(R.id.profileName);
@@ -131,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         memberID=findViewById(R.id.userMemberID);
 
         context=getApplicationContext();
+
+        shortAnimationDuration=getResources().getInteger(android.R.integer.config_shortAnimTime);
 
         SharedPreferences UserDetails=getSharedPreferences("userDetails", Context.MODE_PRIVATE);
         String UserName=UserDetails.getString("userName","n/a");
@@ -223,6 +265,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 
 
+
+
+
+
+
+
         PartialWithdrawalCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,20 +314,29 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 Log.d(TAG, "onScrollChange:y value is : " + scrollY);
                 if (scrollY > 90) {
 
-                    userDetGroup.setVisibility(View.GONE);
-                    userToolbar.setVisibility(View.VISIBLE);
-                    businessMan.setVisibility(View.GONE);
-                    finiIcons.setVisibility(View.VISIBLE);
-                    myAccountLabel.setVisibility(View.GONE);
+
+                    crossfade(businessMan,userToolbar);
+                   userToolbar.setVisibility(View.VISIBLE);
+//                    businessMan.setVisibility(View.GONE);
+
+
+
+                   // finiIcons.setVisibility(View.VISIBLE);
+
 
 
 
 
                 } else {
-                    userDetGroup.setVisibility(View.VISIBLE);
-                    userToolbar.setVisibility(View.GONE);
-                    businessMan.setVisibility(View.VISIBLE);
-                    finiIcons.setVisibility(View.INVISIBLE);
+
+
+                    crossfade(userToolbar,businessMan);
+//                    userToolbar.setVisibility(View.GONE);
+//                   businessMan.setVisibility(View.VISIBLE);
+
+
+
+                  //  finiIcons.setVisibility(View.INVISIBLE);
 
                 }
 
