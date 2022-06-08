@@ -25,8 +25,8 @@
                 android:id="@+id/mainBackdrop"
                 android:layout_width="match_parent"
                 android:layout_height="310dp"
-                android:background="@color/darkBlue"
-                android:backgroundTint="@color/darkBlue"
+                android:background="@drawable/piggyheader"
+
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -57,9 +57,7 @@
                         android:visibility="gone" />
 
 
-
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/welcomeMessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,10 +65,10 @@
                         android:layout_alignStart="@id/iconAvatar"
                         android:fontFamily="@font/poppinsregular"
                         android:text="Welcome Back"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/userName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -79,7 +77,8 @@
                         android:fontFamily="@font/poppinsbold"
                         android:text="Kwabena Jones"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 
@@ -302,6 +301,7 @@
                 android:layout_height="383dp"
                 android:layout_below="@id/balancesScroll"
                 android:layout_marginBottom="10dp"
+                android:padding="30dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
 
@@ -313,12 +313,12 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp">
 
-
+                    <!--Partial Withdrawal-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/partialWithdrawalCard"
-                        android:layout_width="280dp"
-                        android:layout_height="76dp"
-                        android:layout_centerHorizontal="true"
+                        android:layout_width="150dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="10dp">
 
                         <RelativeLayout
@@ -327,24 +327,24 @@
 
                             <ImageView
                                 android:id="@+id/withdrawImage"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/ic_partialwithdrawal" />
 
                             <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_toEndOf="@+id/withdrawImage"
                                 android:fontFamily="@font/poppinsemibold"
-                                android:text="WITHDRAWAL"
+                                android:text="WITHDRAW"
                                 android:textColor="@color/darkBlue"
-                                android:textSize="13sp" />
+                                android:textSize="10sp" />
 
 
                         </RelativeLayout>
@@ -355,11 +355,11 @@
                     <!--  LOAN APPLICATION      -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/loanCard"
-                        android:layout_width="280dp"
-                        android:layout_height="76dp"
-                        android:layout_below="@+id/partialWithdrawalCard"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/partialWithdrawalCard">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -367,23 +367,23 @@
 
                             <ImageView
                                 android:id="@+id/loanImage"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/ic_loanapplication" />
 
                             <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_toEndOf="@+id/loanImage"
                                 android:fontFamily="@font/poppinsemibold"
-                                android:text="LOAN APPLICATION"
+                                android:text="GET A LOAN"
                                 android:textColor="@color/darkBlue"
-                                android:textSize="13sp" />
+                                android:textSize="10sp" />
 
 
                         </RelativeLayout>
@@ -395,10 +395,10 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/loanStatementCard"
-                        android:layout_width="280dp"
-                        android:layout_height="76dp"
+                        android:layout_width="150dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="60dp"
                         android:layout_below="@+id/loanCard"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp">
 
                         <RelativeLayout
@@ -407,15 +407,15 @@
 
                             <ImageView
                                 android:id="@+id/loanStatementImage"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/ic_loanstatement" />
 
                             <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="20dp"
@@ -423,7 +423,7 @@
                                 android:fontFamily="@font/poppinsemibold"
                                 android:text="LOAN STATEMENT"
                                 android:textColor="@color/darkBlue"
-                                android:textSize="13sp" />
+                                android:textSize="10sp" />
 
 
                         </RelativeLayout>
@@ -436,12 +436,13 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/generalStatementCard"
-                        android:layout_width="280dp"
-                        android:layout_height="76dp"
-                        android:layout_below="@+id/loanStatementCard"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/partialWithdrawalCard"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
-                        android:layout_marginTop="10dp">
+                        android:layout_toEndOf="@+id/loanStatementCard">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -449,15 +450,15 @@
 
                             <ImageView
                                 android:id="@+id/genStatementImage"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:src="@drawable/ic_generalstatment" />
 
                             <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="20dp"
@@ -465,7 +466,7 @@
                                 android:fontFamily="@font/poppinsemibold"
                                 android:text="MEMBER STATEMENT"
                                 android:textColor="@color/darkBlue"
-                                android:textSize="13sp" />
+                                android:textSize="10sp" />
 
 
                         </RelativeLayout>
@@ -484,6 +485,15 @@
 
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_navigation_menu"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

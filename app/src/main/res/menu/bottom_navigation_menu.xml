@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/page_1"
+            android:enabled="true"
+            android:icon="@drawable/ic_partialwithdrawal"
+            android:title="Partial Withdrawal"/>
+        <item
+            android:id="@+id/page_2"
+            android:enabled="true"
+            android:icon="@drawable/ic_loanapplication"
+            android:title="Loan Application"/>
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/ic_loanstatement"
+        android:title="Loan Statement"/>
+
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/ic_generalstatment"
+        android:title="General Statement"/>
+
+
+</menu>
